@@ -1,0 +1,27 @@
+{
+    "www.bagoutlet.ca": {
+
+        "list_url": "https://www.bagoutlet.ca/retail-packaging/shopping-bags/reusable-fabric-non-woven/",
+        "list_qs": {
+    
+            "item": ".productGrid .product",
+            "link": "a",
+            "paginator_next": ".pagination-list .pagination-item--next"
+        },
+        "item_qs": {
+            "title": ".productView-title",
+            "price": ".productView-price",
+            "description": [
+                ".productView-info",
+                ".productView-product"
+            ],
+            "image": ".productView-img-container img"
+        }
+    },
+    
+
+
+    "totebagfactory.com": {
+        "list_url": "https://totebagfactory.com/collections/wholesale-tote-bags"
+    }
+}
