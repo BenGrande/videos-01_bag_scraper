@@ -1,11 +1,14 @@
 from pull_single_site import get_bags_from_site
 import json
+from selenium import webdriver
+import time
 def pull_all_sites():
     # Shopify stores
             # https://www.baggu.com/collections/reusable-bags
             # https://totebagfactory.com/collections/wholesale-tote-bags
     f = open('sites.json')
- 
+    driver = webdriver.Chrome()
+    time.sleep(20)
     # returns JSON object as 
     # a dictionary
     sites = json.load(f)
@@ -14,7 +17,7 @@ def pull_all_sites():
     total_number_of_sites = 0
     for site in sites:
         try:
-            bags = get_bags_from_site(sites[site])
+            bags = get_bags_from_site(sites[site], driver)
             bag_output = open("outputs/"+site+".json", "w")
             bag_output.write(json.dumps(bags))
             total_number_of_bags += len(bags)

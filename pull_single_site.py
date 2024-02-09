@@ -61,8 +61,8 @@ def get_bag_details(driver, bag_link, settings):
             elif key == "image":
                 bag[key] = driver.find_element(By.CSS_SELECTOR, settings["item_qs"][key]).get_attribute("src")
         except Exception as e:
-            exit()
             bag[key] = ""
+    bag["product_url"] = bag_link
     return bag
 
 def pull_shopify(list_url):
@@ -92,25 +92,33 @@ def pull_shopify(list_url):
             return bags
     return bags
 
-def get_bags_from_site(settings):
+def get_bags_from_site(settings, odriver):
     
     list_url = settings["list_url"]
     x = requests.get(list_url+".json", headers={
         "Content-Type": "application/json"
     })
+    shopify = False
     if x.status_code == 200:
-        return pull_shopify(list_url)
-    else:
+        try:
+            products = x.json()["products"]
+            if len(products) > 0:
+                return pull_shopify(list_url)
+        except:
+            pass
+    driver = odriver
+    if odriver is None:
         driver = webdriver.Chrome()
-        bag_links = get_bag_links_from_site(driver, settings)
-        bags = []
-        for bag_link in bag_links:
-            try:
-                bag = get_bag_details(driver, bag_link, settings)
-                bags.append(bag)
-            except Exception as e:
-                print("Couldn't get bag details", e)
+    bag_links = get_bag_links_from_site(driver, settings)
+    bags = []
+    for bag_link in bag_links:
+        try:
+            bag = get_bag_details(driver, bag_link, settings)
+            bags.append(bag)
+        except Exception as e:
+            print("Couldn't get bag details", e)
+    if odriver is None:
         driver.close()
-        return bags
+    return bags
 
 

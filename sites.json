@@ -18,10 +18,78 @@
             "image": ".productView-img-container img"
         }
     },
+    "4imprint.ca": {
+        "list_url": "https://www.4imprint.ca/tag/390/shopping-and-grocery",
+        "list_qs": {
+            "item": ".productListItem",
+            "link": "a",
+            "paginator_next": "button.pagingArrow.pagerLink"
+        },
+        "item_qs": {
+            "title": "h1",
+            "price": ".originalPricePadding",
+            "description": [
+                "#detailsPanel",
+                "#materialsPanel"
+            ],
+            "image": "img.mainProdImg"
+        }
+    },
+    "reusethisbag.com": {
+        "list_url": "https://www.reusethisbag.com/category/reusable-grocery-bags",
+        "list_qs": {
+            "item": ".product",
+            "link": "a"
+        },
+        "item_qs": {
+            "title": "h1",
+            "description": "section.box-section[itemprop=\"description\"]",
+            "image": ".product-image.main_product_img img"
+        }
+    },
+    "pens.com": {
+        "list_url": "https://www.pens.com/ca/c/custom-reusable-shopping-bags",
+        "list_qs": {
+            "item": ".plp-results .product-card",
+            "link": "a",
+            "paginator_next": "#btn-load-more"
+        },
+        "item_qs": {
+            "title": "h1",
+            "price": ".summary-total__price.giga.summary-total-amount",
+            "description": ".product__description.prod-desc-font-style",
+            "image": ".main_image img"
+        }
+    },
+    "ovbag.com": {
+        "list_url": "https://www.ovbag.com/customization?Style=Grocery+Tote",
+        "list_qs": {
+            "item": "li[data-hook=\"product-list-grid-item\"]",
+            "link": "a",
+            "paginator_next": "button[data-hook=\"load-more-button\"]"
+        },
+        "item_qs": {
+            "title": "h1",
+            "price": "div[data-hook=\"product-price\"]",
+            "description": [
+                "div[data-hook=\"description\"]",
+                "data-hook=\"collapse-info-section\""
+            ],
+            "image": "wow-image img"
+        }
+    },
     
+    "www.envireusablebags.com": {
+        "list_url": "https://www.envireusablebags.com/polypropylene-bags"
 
-
+    },
+    "themarketbags.com": {
+        "list_url": "https://themarketbags.ca/collections/reusable-grocery-tote-bags"
+    },
     "totebagfactory.com": {
         "list_url": "https://totebagfactory.com/collections/wholesale-tote-bags"
+    },
+    "bagsinbulk.com": {
+        "list_url": "https://bagsinbulk.ca/collections/wholesale-reusable-shopping-bags"
     }
 }
